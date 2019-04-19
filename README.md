@@ -1,9 +1,9 @@
-## ali-oss-put
+## @fetools/ali-oss-put
 
 ### install 
 
 ```sh
-$ npm i ali-oss-put -D
+$ npm i @fetools/ali-oss-put -D
 ```
 
 ### config
@@ -36,7 +36,7 @@ use in package.json
 or use in js file 
 
 ```javascript
-const aliOssPut= require('.ali-oss-put')
+const aliOssPut= require('@fetools/ali-oss-put')
 
 aliOssPut()
 ```

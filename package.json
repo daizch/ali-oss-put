@@ -1,19 +1,24 @@
 {
-  "name": "ali-oss-put",
-  "version": "0.1.0",
-  "description": "ali-oss-put-cli",
+  "name": "@fetools/ali-oss-put",
+  "version": "0.1.2",
+  "description": "ali-oss-put",
   "main": "index.js",
   "scripts": {},
   "keywords": [
     "ali",
     "oss",
     "put",
-    "ali-oss"
+    "ali-oss",
+    "@fetools"
   ],
   "author": "zechengdai",
   "license": "MIT",
   "bin": {
     "ali-oss-put": "bin/ali-oss-put"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/daizch/ali-oss-put.git"
   },
   "dependencies": {
     "ali-oss": "^6.1.1",
