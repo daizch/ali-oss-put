@@ -35,13 +35,16 @@ async function aliOSSPut(opts) {
   const ossIns = oss(opts)
   var files = await getUploadFiles(opts)
 
-  var promises = files.map(file => {
+
+  var promises = []
+  for (let file of files) {
     const target = path.relative(opts.src, file)
     if (opts.silent === false) {
       log(`put file ${file} to oss ${opts.prefix}${target}`)
     }
-    return ossIns.put(`${opts.prefix}${target}`, file)
-  })
+    let promise = ossIns.put(`${opts.prefix}${target}`, file)
+    promises.push(promise)
+  }
 
   var results = await Promise.all(promises)
   if (opts.silent === false) {
@@ -74,7 +77,11 @@ module.exports = async function start() {
 
   const spinner = ora('uploading...').start();
 
-  await aliOSSPut(options)
-
-  spinner.succeed(`completely upload to bucket ${options.bucket} at region ${options.region}`)
+  try {
+    await aliOSSPut(options)
+    spinner.succeed(`completely upload to bucket ${options.bucket} at region ${options.region}`)
+  } catch (e) {
+    spinner.succeed(`completely upload to bucket ${options.bucket} at region ${options.region}`)
+    throw new Error(e)
+  }
 }
